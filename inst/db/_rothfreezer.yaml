@@ -11,7 +11,7 @@ update:
   primers:                'rothfreezer::update_primers()'
   media:                  'rothfreezer::update_media()'
   queries:                'rothfreezer::update_queries()'
-  # strain_collections:     'rothfreezer::update_strain_collections()'
+  strain_collections:     'rothfreezer::update_strain_collections()'
   strain_collection_info: 'rothfreezer::update_strain_collection_info()'
   treatments:             'rothfreezer::update_treatments()'
   plasmids:               'rothfreezer::update_plasmids()'
