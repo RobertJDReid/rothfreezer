@@ -4,8 +4,11 @@
 \alias{update_genes}
 \title{Update gene annotation table}
 \usage{
-update_genes(file = "genes/sgd.csv",
-  from = "http://downloads.yeastgenome.org/curation/chromosomal_feature/SGD_features.tab")
+update_genes(
+  file = "genes/sgd.csv",
+ 
+    from = "http://downloads.yeastgenome.org/curation/chromosomal_feature/SGD_features.tab"
+)
 }
 \arguments{
 \item{file}{Where to write the CSV.}

@@ -8,6 +8,7 @@ Maintainer: 'Eric Bryant' <eeb2139@columbia.edu>
 Description: Freezer database for the Rothstein Lab.
 License: GPL (>= 2)
 VignetteBuilder: knitr
+Encoding: UTF-8
 Imports:
     dplyr,
     dbplyr,
@@ -22,4 +23,4 @@ Suggests:
     data.table
 Remotes:
     EricEdwardBryant/easydb
-RoxygenNote: 6.1.0
+RoxygenNote: 7.0.2

@@ -3,7 +3,6 @@
 \docType{package}
 \name{rothfreezer}
 \alias{rothfreezer}
-\alias{rothfreezer-package}
 \title{Rothfreezer R package}
 \description{
 Rothfreezer R package

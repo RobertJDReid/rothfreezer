@@ -4,8 +4,11 @@
 \alias{update_genetic_distances}
 \title{Update genetic distances}
 \usage{
-update_genetic_distances(dir = "genetic_distances",
-  from = "http://downloads.yeastgenome.org/curation/chromosomal_feature/SGD_features.tab")
+update_genetic_distances(
+  dir = "genetic_distances",
+ 
+    from = "http://downloads.yeastgenome.org/curation/chromosomal_feature/SGD_features.tab"
+)
 }
 \arguments{
 \item{dir}{Where to write the CSVs. Each chromosome is saved in a separate file.}
