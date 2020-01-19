@@ -3,11 +3,13 @@
 #' @param file Where to save the CSV.
 #' @param from Where to download the CSV. (Must be an accessible google spreadsheet URL)
 #' 
-#' @importFrom googlesheets gs_url gs_download
+#' @importFrom googlesheets4 read_sheet
+#' @importFrom readr write_csv
 #' @export
 
 update_from_googlesheet <- function(file, from) {
-  googlesheets::gs_download(googlesheets::gs_url(from), to = file, overwrite = TRUE)
+  df <- googlesheets4::read_sheet(from,  na = c("", "NA", "na", "N/A"))
+  readr::write_csv(df, file)
 }
 
 

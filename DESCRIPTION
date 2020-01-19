@@ -14,7 +14,7 @@ Imports:
     easydb,
     RSQLite,
     readr,
-    googlesheets
+    googlesheets4
 Suggests:
     knitr,
     devtools,
