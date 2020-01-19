@@ -9,9 +9,37 @@
 
 update_from_googlesheet <- function(file, from) {
   df <- googlesheets4::read_sheet(from,  na = c("", "NA", "na", "N/A"))
+  .check_for_list_cols(df)
   readr::write_csv(df, file)
 }
 
+# Sometimes there will be a character value included in a column that should
+# be e.g. numeric. This causes list columns to be created.
+# This function will cause an error when this happens indicating the problem
+# rows and columns
+.check_for_list_cols <- function(df) {
+  list_cols <- names(df)[purrr::map_lgl(df, is.list)]
+  
+  if (!length(list_cols)) return()
+  
+  problems <- purrr::map(df[, list_cols], .problem_rows)
+  
+  stop(
+    "Unexpected list columns, please check the following rows of the named ",
+    "columns to make sure their type matches other rows in the table.\n",
+    paste(
+      "\n", names(problems), "\n", 
+      purrr::map(problems, paste, collapse = ", "), 
+      "\n"
+    )
+  )
+}
+
+.problem_rows <- function(lst) {
+  classes <- purrr::map_chr(lst, ~class(.x)[1]) # first class (e.g. POSIXct)
+  most_common_class <- names(which.max(table(classes)))
+  which(classes != most_common_class)
+}
 
 #' Update gene annotation table
 #' 
