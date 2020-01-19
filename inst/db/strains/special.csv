@@ -1,2 +1,2 @@
 strain_id,strain_name,strain_description,parents,background,mat,genotype,allele_id,gene_id,freezer,shelf,rack,pullout,insert,row,column,owner,date,publications,tags,strain_notes,warnings,filemaker
-blank,blank,blank,-,-,-,-,-,-,-,0,0,0,0,0,0,,,,,,,
+blank,blank,blank,-,-,-,-,-,-,-,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,NA

@@ -109,7 +109,7 @@ MATa-cispt-96-hb-V2,rec174,2,1,11,FALSE,yen1,FALSE
 MATa-cispt-96-hb-V2,rec2458,2,1,12,TRUE,his3,FALSE
 MATa-cispt-96-hb-V2,rec2458,2,2,1,TRUE,his3,FALSE
 MATa-cispt-96-hb-V2,rec3468,2,2,2,FALSE,mrc1,FALSE
-MATa-cispt-96-hb-V2,rec1962,2,2,3,FALSE,,FALSE
+MATa-cispt-96-hb-V2,rec1962,2,2,3,FALSE,NA,FALSE
 MATa-cispt-96-hb-V2,rec2458,2,2,4,TRUE,his3,FALSE
 MATa-cispt-96-hb-V2,rec2848,2,2,5,FALSE,rtt107,FALSE
 MATa-cispt-96-hb-V2,rec4085,2,2,6,FALSE,dcn1,FALSE
