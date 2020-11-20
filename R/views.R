@@ -39,9 +39,9 @@
 view_strain_collection_keys <- function(src = src_rothfreezer()) {
   assert_that(is.src(src))
   left_join(
-    tbl(src, 'strain_collections') %>% select_(~strain_collection_id:plate_control, ~excluded),
-    tbl(src, 'strains') %>% select_(~strain_id, ~strain_name, ~gene_id),
+    tbl(src, 'strain_collections') %>% select(strain_collection_id:plate_control, excluded),
+    tbl(src, 'strains') %>% select(strain_id, strain_name, gene_id),
     by = 'strain_id'
   ) %>%
-  select_(~strain_collection_id, ~strain_id, ~strain_name, ~gene_id, ~plate:plate_control, ~excluded)
+    select(strain_collection_id, strain_id, strain_name, gene_id, plate:plate_control, excluded)
 }
