@@ -15,7 +15,9 @@ Imports:
     easydb,
     RSQLite,
     readr,
-    googlesheets4
+    googlesheets4,
+    assertthat,
+    rlang
 Suggests:
     knitr,
     devtools,
