@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Eric Bryant, eeb2139@columbia.edu" />
+
+<meta name="date" content="2020-11-20" />
+
+<title>Database Overview</title>
+
+
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Database Overview</h1>
+<h4 class="author">Eric Bryant, <a href="mailto:eeb2139@columbia.edu" class="email">eeb2139@columbia.edu</a></h4>
+<h4 class="date">2020-11-20</h4>
+
+
+<div id="TOC">
+<ul>
+<li><a href="#quick-links">Quick Links</a></li>
+<li><a href="#tables">Tables</a><ul>
+<li><a href="#freezer-addresses">Freezer Addresses</a></li>
+<li><a href="#allele-item-mappings">Allele-Item mappings</a></li>
+<li><a href="#allele-annotation">Allele annotation</a></li>
+<li><a href="#antibodies">Antibodies</a></li>
+<li><a href="#drugs">Drugs</a></li>
+<li><a href="#gene-annotation">Gene annotation</a></li>
+<li><a href="#plasmids">Plasmids</a></li>
+<li><a href="#primers">Primers</a></li>
+<li><a href="#strain-collections">Strain Collections</a></li>
+<li><a href="#strains">Strains</a></li>
+</ul></li>
+</ul>
+</div>
+
+<div id="quick-links" class="section level1">
+<h1>Quick Links</h1>
+<ul>
+<li><a href="strains.html">Strains</a></li>
+<li><a href="primers.html">Primers</a></li>
+<li><a href="freezer.html">Freezer</a></li>
+</ul>
+</div>
+<div id="tables" class="section level1">
+<h1>Tables</h1>
+<div id="freezer-addresses" class="section level2">
+<h2>Freezer Addresses</h2>
+<p><strong>Table name:</strong> <code>addresses</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>freezer</code></td>
+<td align="left">Freezer name</td>
+</tr>
+<tr class="even">
+<td align="left"><code>temp</code></td>
+<td align="left">Freezer temperature</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>shelf</code></td>
+<td align="left">Shelf number (starting with 1 at top of freezer)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>rack</code></td>
+<td align="left">Rack number (starting with 1 on left of shelf)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>pullout</code></td>
+<td align="left">Pullout number (starting with 1 at top of rack)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>insert</code></td>
+<td align="left">Insert number (starting with 1 at front of pullout)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>row</code></td>
+<td align="left">Row letter (starting with A at top of insert)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>column</code></td>
+<td align="left">Column number (starting with 1 at left of insert)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>pullout_label</code></td>
+<td align="left">Label on Pullout</td>
+</tr>
+<tr class="even">
+<td align="left"><code>box_label</code></td>
+<td align="left">Label on Box</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>description</code></td>
+<td align="left">Description of item</td>
+</tr>
+<tr class="even">
+<td align="left"><code>type</code></td>
+<td align="left">Type of item (computed from other tables in database)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>item_id</code></td>
+<td align="left">ID of item (must match a <code>strain_id</code>, <code>plasmid_id</code>, or</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="left"><code>primer_id</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="allele-item-mappings" class="section level2">
+<h2>Allele-Item mappings</h2>
+<p><strong>Table name:</strong> <code>allele_item</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>allele_id</code></td>
+<td align="left">An allele ID (must be present in <code>alleles</code> table)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>item_id</code></td>
+<td align="left">ID of item (must match a <code>strain_id</code>, <code>plasmid_id</code>, or</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="left"><code>primer_id</code>)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="allele-annotation" class="section level2">
+<h2>Allele annotation</h2>
+<p><strong>Table name:</strong> <code>alleles</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>allele_id</code></td>
+<td align="left">An allele ID</td>
+</tr>
+<tr class="even">
+<td align="left"><code>allele_name</code></td>
+<td align="left">Name of allele</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>allele_type</code></td>
+<td align="left">Type of allele (e.g. disruption, point mutation…)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>allele_description</code></td>
+<td align="left">Description of allele</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>dna_changes</code></td>
+<td align="left">Mutations relative to WT reference DNA</td>
+</tr>
+<tr class="even">
+<td align="left"><code>aa_changes</code></td>
+<td align="left">Mutations relative to WT reference amino acid sequence</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="antibodies" class="section level2">
+<h2>Antibodies</h2>
+<p><strong>Table name:</strong> <code>antibodies</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>antibody_id</code></td>
+<td align="left">An antibody ID</td>
+</tr>
+<tr class="even">
+<td align="left"><code>antibody_name</code></td>
+<td align="left">Name of antibody</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>antibody_description</code></td>
+<td align="left">Description of antibody</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="drugs" class="section level2">
+<h2>Drugs</h2>
+<p><strong>Table name:</strong> <code>drugs</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>drug_id</code></td>
+<td align="left">A drug ID</td>
+</tr>
+<tr class="even">
+<td align="left"><code>drug_name</code></td>
+<td align="left">Name of drug</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>drug_description</code></td>
+<td align="left">Description of drug</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="gene-annotation" class="section level2">
+<h2>Gene annotation</h2>
+<p><strong>Table name:</strong> <code>genes</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>gene_id</code></td>
+<td align="left">SGD ID</td>
+</tr>
+<tr class="even">
+<td align="left"><code>orf_id</code></td>
+<td align="left">ORF ID</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>gene_name</code></td>
+<td align="left">Official gene name (from SGD)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>gene_alias</code></td>
+<td align="left">Gene aliases (separaged by <code>|</code>)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>gene_description</code></td>
+<td align="left">Gene descritpion</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="plasmids" class="section level2">
+<h2>Plasmids</h2>
+<p><strong>Table name:</strong> <code>plasmids</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>plasmid_id</code></td>
+<td align="left">ID of plasmid (e.g. pWJ#)</td>
+</tr>
+<tr class="even">
+<td align="left"><code>plasmid_name</code></td>
+<td align="left">Name of plasmid</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plasmid_description</code></td>
+<td align="left">Description of plasmid</td>
+</tr>
+<tr class="even">
+<td align="left"><code>promoter</code></td>
+<td align="left">Promoter source (e.g. GAL1)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>allele_id</code></td>
+<td align="left">An allele ID</td>
+</tr>
+<tr class="even">
+<td align="left"><code>gene_id</code></td>
+<td align="left">A gene ID</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>insert_gene</code></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>insert_orf</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>yeast_marker</code></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>yeast_propagation</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>bact_marker</code></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>bact_propagation</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plasmid_parent</code></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>plasmid_owner</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plasmid_address</code></td>
+<td align="left">Soon to be removed</td>
+</tr>
+<tr class="even">
+<td align="left"><code>plasmid_date</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plasmid_notes</code></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>viability</code></td>
+<td align="left">Soon to be removed</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="primers" class="section level2">
+<h2>Primers</h2>
+<p><strong>Table name:</strong> <code>primers</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>primer_id</code></td>
+<td align="left">ID of primer</td>
+</tr>
+<tr class="even">
+<td align="left"><code>alias</code></td>
+<td align="left">Alias of primer</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>sequence</code></td>
+<td align="left">Sequence of primer</td>
+</tr>
+<tr class="even">
+<td align="left"><code>description</code></td>
+<td align="left">Description of primer</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>owner</code></td>
+<td align="left">Owner of primer</td>
+</tr>
+<tr class="even">
+<td align="left"><code>notes</code></td>
+<td align="left">Notes on primer</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="strain-collections" class="section level2">
+<h2>Strain Collections</h2>
+<p><strong>Table name:</strong> <code>strain_collections</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>strain_collection_id</code></td>
+<td align="left">ID of strain collection</td>
+</tr>
+<tr class="even">
+<td align="left"><code>strain_id</code></td>
+<td align="left">Strain ID</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>plate</code></td>
+<td align="left">Plate number</td>
+</tr>
+<tr class="even">
+<td align="left"><code>row</code></td>
+<td align="left">Row letter</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>column</code></td>
+<td align="left">Column number</td>
+</tr>
+<tr class="even">
+<td align="left"><code>plate_control</code></td>
+<td align="left">Is the strain to be treated as a plate control? (T/F)</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>strain_collection_notes</code></td>
+<td align="left">Notes on the strain in this particular collection</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="strains" class="section level2">
+<h2>Strains</h2>
+<p><strong>Table name:</strong> <code>strains</code></p>
+<p><strong>Fields:</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Field</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>strain_id</code></td>
+<td align="left">Strain ID</td>
+</tr>
+<tr class="even">
+<td align="left"><code>strain_name</code></td>
+<td align="left">Strain name</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>strain_description</code></td>
+<td align="left">Strain description</td>
+</tr>
+<tr class="even">
+<td align="left"><code>allele_id</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>gene_id</code></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>genotype</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>mat</code></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>background</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>strain_notes</code></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

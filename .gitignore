@@ -6,3 +6,5 @@ inst/doc
 .httr-oauth
 inst/db/rothfreezer.sqlite
 unused
+vignettes/primers.html
+vignettes/strains.html
