@@ -195,6 +195,7 @@ update_strain_collections <- function() {
   update_strain_collection_MATalpha_CTF4_RAD5_96_hb()
   
   # Community libraries
+  update_strain_collection_MATa_deletion2021_384()
   update_strain_collection_MATa_deletion_384()
   update_strain_collection_MATalpha_deletion_384_hb()
   update_strain_collection_MATalpha_deletion_96()
@@ -275,6 +276,13 @@ update_strain_collection_MATalpha_CTF4_RAD5_96_hb <- function(file = 'strain-col
 #' @export
 update_strain_collection_MATa_ts_384_hb <- function(file = 'strain-collections/MATa-ts-384-hb.csv', 
                                                     from = 'https://docs.google.com/spreadsheets/d/1zlM9wxoVHtSk5yac209veMCGZPvOnGRUdt5OJSqdGmA/edit?usp=sharing') {
+  update_from_googlesheet(file, from)
+}
+
+#' @rdname update_from_googlesheet
+#' @export
+update_strain_collection_MATa_deletion2021_384 <- function(file = 'strain-collections/MATa-deletion2021-384.csv', 
+                                                           from = 'https://docs.google.com/spreadsheets/d/11QwKAGZNmA50qnRF73WdQjDtxHAwapSVies9HuM7Yp0/edit?usp=sharing') {
   update_from_googlesheet(file, from)
 }
 
