@@ -1,4 +1,4 @@
-strain_collection_id,strain_id,plate,row,colum,plate_control,strain_collection_notes,excluded
+strain_collection_id,strain_id,plate,row,column,plate_control,strain_collection_notes,excluded
 mata-deletion2021-384,blank,1,2,2,TRUE,NA,FALSE
 mata-deletion2021-384,rec338,1,2,4,TRUE,NA,FALSE
 mata-deletion2021-384,rec339,1,2,6,TRUE,NA,FALSE
