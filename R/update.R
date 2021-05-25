@@ -282,7 +282,7 @@ update_strain_collection_MATa_ts_384_hb <- function(file = 'strain-collections/M
 #' @rdname update_from_googlesheet
 #' @export
 update_strain_collection_MATa_deletion2021_384 <- function(file = 'strain-collections/MATa-deletion2021-384.csv', 
-                                                           from = 'https://docs.google.com/spreadsheets/d/1CWHzpXeMtadxr4RLZjWZqHp5RDnbsDuWuVzWi0GLHfs/edit#gid=1017084220') {
+                                                           from = 'https://docs.google.com/spreadsheets/d/1oWpkmxHqzCcVPDWlzmJSc23TsH7FVMQji9wB4Lxa4C0/edit#gid=1840937788') {
   update_from_googlesheet(file, from)
 }
 
