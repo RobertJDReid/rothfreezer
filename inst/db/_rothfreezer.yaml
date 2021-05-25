@@ -2,6 +2,13 @@ name: rothfreezer.sqlite
 
 # Comment/Uncomment updates then run:
 #     easydb::db_update('path/to/_rothfreezer.yaml')
+#
+#     to add or remove tables: e.g. add a key file for a new strain_collection
+#     add the strain collection csv file to the google drive
+#     add an entry for the strain collection in the strain_collection_info.csv
+#     then run 
+#     easydb::db_build('path/to/_rothfreezer.yaml')
+#
 update:
   # ---- From SGD ----
   # genes:                  'rothfreezer::update_genes()'
